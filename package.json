@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "html": "^1.0.0",
-    "server": "^1.0.27",
+    "server": "^0.0.3",
     "socket.io": "^2.3.0"
   }
 }
