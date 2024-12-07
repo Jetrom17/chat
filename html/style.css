@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f0f4f8;
+  color: #1a365d;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6f2ff 0%, #c4e0ff 100%);
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 105, 255, 0.15);
+  border: 1px solid #4299e1;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+label {
+  color: #2c5282;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-align: left;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+input {
+  flex-grow: 1;
+  background: #e6f2ff;
+  color: #1a365d;
+  font-size: 16px;
+  border: 2px solid #4299e1;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 105, 255, 0.1);
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.message {
+  color: #4a5568;
+  font-style: italic;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #2c5282;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 0;
+    border-radius: 8px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  label {
+    text-align: center;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* Animações suaves */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  animation: fade-in 0.5s ease-out;
+}
+
+/* Efeito de hover sutil */
+.container:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
