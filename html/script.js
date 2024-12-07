@@ -16,7 +16,7 @@ function onload(){
   dingSound = document.getElementById("Ding");
 
   socket.on("join", function(room){
-    chatRoom.innerHTML = "Sala : " + room;
+    chatRoom.textContent = "Sala : " + room;
   })
 
   socket.on("recieve", function(message){
@@ -31,7 +31,7 @@ function onload(){
       messages.push(message);
     }
     for (i = 0; i < messages.length; i++){
-        document.getElementById("Message"+i).innerHTML = messages[i];
+        document.getElementById("Message"+i).textContent = messages[i];
         document.getElementById("Message"+i).style.color = "#303030";
     }
   })
