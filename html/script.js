@@ -8,11 +8,11 @@ var dingSound;
 var messages = [];
 var delay = true;
 
-// Função que inicializa a conexão do socket e configura o comportamento da página
+// Inicialização do socket e dos elementos DOM
 document.addEventListener("DOMContentLoaded", function() {
   // Inicialização do socket
   socket = io();
-  
+
   // Referências aos elementos do DOM
   usernameInput = document.getElementById("NameInput");
   chatIDInput = document.getElementById("IDInput");
