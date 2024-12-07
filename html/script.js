@@ -1,5 +1,5 @@
+// Variáveis globais
 var socket;
-import DOMPurify from 'dompurify';
 var usernameInput;
 var chatIDInput;
 var messageInput;
@@ -8,20 +8,25 @@ var dingSound;
 var messages = [];
 var delay = true;
 
-function onload() {
+// Função que inicializa a conexão do socket e configura o comportamento da página
+document.addEventListener("DOMContentLoaded", function() {
+  // Inicialização do socket
   socket = io();
+  
+  // Referências aos elementos do DOM
   usernameInput = document.getElementById("NameInput");
   chatIDInput = document.getElementById("IDInput");
   messageInput = document.getElementById("ComposedMessage");
   chatRoom = document.getElementById("RoomID");
   dingSound = document.getElementById("Ding");
 
-  socket.on("join", function (room) {
-    
+  // Evento de entrada na sala
+  socket.on("join", function(room) {
     chatRoom.textContent = "Sala : " + DOMPurify.sanitize(room);
   });
 
-  socket.on("recieve", function (message) {
+  // Evento de recebimento de mensagem
+  socket.on("recieve", function(message) {
     console.log(message);
     if (messages.length < 9) {
       messages.push(message);
@@ -36,21 +41,24 @@ function onload() {
       document.getElementById("Message" + i).style.color = "#303030";
     }
   });
-}
+});
 
-function Connect() {
+// Função chamada ao clicar no botão "Entrar"
+window.Connect = function() {
   socket.emit("join", chatIDInput.value, usernameInput.value);
 }
 
-function Send() {
+// Função chamada ao clicar no botão "Enviar"
+window.Send = function() {
   if (delay && messageInput.value.replace(/\s/g, "") != "") {
     delay = false;
-    setTimeout(delayReset, 1000);
+    setTimeout(delayReset, 1000);  // Configuração para evitar envio repetido
     socket.emit("send", messageInput.value);
-    messageInput.value = "";
+    messageInput.value = "";  // Limpa a caixa de mensagem após enviar
   }
 }
 
+// Função para resetar o delay
 function delayReset() {
   delay = true;
 }
