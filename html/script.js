@@ -1,4 +1,5 @@
 var socket;
+import DOMPurify from 'dompurify';
 var usernameInput
 var chatIDInput;
 var messageInput;
@@ -16,7 +17,7 @@ function onload(){
   dingSound = document.getElementById("Ding");
 
   socket.on("join", function(room){
-    chatRoom.innerHTML = "Sala : " + room;
+    chatRoom.innerHTML = "Sala : " + DOMPurify.sanitize(room);
   })
 
   socket.on("recieve", function(message){
